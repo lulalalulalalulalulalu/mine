@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * Module dependencies. 依赖加载
  */
 
 var app = require('../app');
@@ -11,20 +11,21 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
-
+//定义启动端口
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-
+//创建HTTP服务器实例
 var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
+ //启动网络监听端口
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -32,7 +33,7 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-
+//端口标准化函数
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
@@ -52,7 +53,7 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
+//HTTP异常事件处理函数
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -80,7 +81,7 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
+//事件绑定函数
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
