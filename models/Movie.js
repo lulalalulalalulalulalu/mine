@@ -4,7 +4,7 @@ const Schema = mongodb.mongoose.Schema;
 
 const MoviesSchema = new Schema({
     name: String,
-    alias: [string],
+    alias: [String],
     publish: Date,
     create_date: {
         type: Date,

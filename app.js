@@ -5,10 +5,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var routes = require('./routes/users');
+var movie = require('./routes/movie');
+var http = require('http');
+var ejs = require('ejs');
+var SessionStore = require('session-mongoose')(express);
 
 //加载路由控制
 var index = require('./routes/index');
-// var users = require('./routes/users');
+var users = require('./routes/users');
 
 //创建项目实例
 var app = express();
@@ -52,6 +57,11 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.get('/movie/add', movie.movieAdd);    //增加
+app.post('/movie/add', movie.doMovieAdd);    //提交
+app.post('movie/:name', movie.movieAdd);    //编辑查询
+// app.post('movie/json/:name', movie.movieJSON);    //JSON数据
 
 //输出模型app
 module.exports = app;
